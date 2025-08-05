@@ -1,0 +1,48 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Custom responsive utilities */
+@media (max-width: 475px) {
+  .xs\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+  .xs\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+  .xs\:text-base { font-size: 1rem; line-height: 1.5rem; }
+  .xs\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+  .xs\:py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  .xs\:w-28 { width: 7rem; }
+  .xs\:h-28 { height: 7rem; }
+  .xs\:flex-row { flex-direction: row; }
+  .xs\:space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 2rem; }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Dark mode support */
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+/* Ensure full width on mobile */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Force theme transition */
+.dark * {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
