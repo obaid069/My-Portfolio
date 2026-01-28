@@ -4,15 +4,18 @@ import { Zap, Code, Server } from 'lucide-react';
 
 const Skills = () => {
   const skills = [
-    { name: '.NetCore', icon: Code, description: 'Experienced in building robust applications with C#.' },
     { name: 'C++', icon: Code, description: 'Strong foundation in system programming and algorithms.' },
+    { name: 'Python', icon: Code, description: 'Proficient in scripting, automation, and data processing.' },
     { name: 'JavaScript', icon: Code, description: 'Modern ES6+ features and async programming.' },
-    { name: 'React.js', icon: Zap, description: 'Skilled in building modern web interfaces with React.' },
-    { name: 'Node.js', icon: Zap, description: 'Backend development with Express and APIs.' },
-    { name: 'Docker', icon: Server, description: 'Familiar with containerization and orchestration tools.' },
-    { name: 'MongoDB', icon: Server, description: 'NoSQL database design and optimization.' },
-    { name: 'AWS', icon: Server, description: 'Cloud infrastructure and CI/CD pipelines.' },
-    { name: 'Networking', icon: Server, description: 'Have strong skill in configration, installation, and maintenance of devices ' }
+    { name: '.NET Core', icon: Code, description: 'Building enterprise applications with ASP.NET Core MVC.' },
+    { name: 'React.js', icon: Zap, description: 'Skilled in building modern web interfaces and mobile apps with React Native.' },
+    { name: 'Node.js', icon: Zap, description: 'Backend development with Express.js and RESTful APIs.' },
+    { name: 'Docker', icon: Server, description: 'Containerization and CI/CD pipeline automation.' },
+    { name: 'Jenkins & GitHub Actions', icon: Server, description: 'Automated deployment pipelines and continuous integration.' },
+    { name: 'AWS & Firebase', icon: Server, description: 'Cloud infrastructure, serverless functions, and authentication.' },
+    { name: 'MongoDB & SQL', icon: Server, description: 'Database design, optimization, and management.' },
+    { name: 'Git & GitLab', icon: Server, description: 'Version control and collaborative development workflows.' },
+    { name: 'Networking', icon: Server, description: 'Configuration, installation, and maintenance of network devices and infrastructure.' }
   ];
 
   const containerVariants = {

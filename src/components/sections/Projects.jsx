@@ -1,34 +1,58 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      name: 'BlinkFit',
-      description: 'AI-Based Eye Health  App - Real-time eye tracking and health monitoring.',
-      tech: 'React Native, TensorFlow Lite, MediaPipe, Firebase',
-      role: 'Lead AI Developer'
+      name: 'BlinkFit Mobile Application',
+      description: 'A comprehensive cross-platform mobile application designed to monitor and improve eye health through intelligent tracking and automated interventions. Features include real-time blink detection using computer vision, automated eye redness analysis, comprehensive screen time monitoring with analytics, automated eye break reminders, parental control system, biometric security, and offline-first architecture with intelligent sync.',
+      tech: 'React Native, Firebase, TypeScript, Computer Vision, MediaPipe',
+      role: 'Lead Mobile Developer'
     },
     {
-      name: 'AI Cosmetics',
-      description: 'E-Commerce Web App - Full-stack cosmetic store with admin panel.',
-      tech: 'React.js, Node.js, MongoDB, Tailwind CSS',
+      name: 'BlinkFit Website',
+      description: 'Companion website for the BlinkFit eye health monitoring app featuring responsive design, product information, user testimonials, download links, and informative content about eye health and digital wellbeing. Built with modern web technologies for optimal performance and user experience.',
+      tech: 'React.js, Tailwind CSS, Responsive Design',
+      role: 'Frontend Developer',
+      link: 'https://www.blinkfit.site/'
+    },
+    {
+      name: 'E-Commerce Website - .NET Core MVC',
+      description: 'Full-featured ASP.NET Core MVC e-commerce web app with product management, shopping flow, user authentication, role-based admin controls, and secure SQL Server integration.',
+      tech: '.NET Core, SQL Server, MVC Architecture',
       role: 'Full Stack Developer'
     },
     {
-      name: 'DevOps CI/CD Pipeline',
-      description: 'Automated deployment pipeline - Complete CI/CD solution from GitHub to AWS EC2 deployment.',
-      tech: 'GitHub Actions, Jenkins, Docker, AWS EC2',
+      name: 'CI/CD Pipeline Automation',
+      description: 'Complete CI/CD pipeline using Docker, Jenkins, GitHub, and AWS EC2 for automated build, test, and deployment.',
+      tech: 'Docker, Jenkins, GitHub Actions, AWS EC2',
       role: 'DevOps Engineer'
     },
     {
-      name: "Smart Home Automation",
-      description: "An IoT-based system that allows users to control home appliances remotely through web and mobile applications.",
-      tech: "Hardware (Arduino, sensors, actuators) and Software ",
-      role: "IoT Developer"
+      name: 'IoT Smart Alert System',
+      description: 'IoT-based system to monitor environmental/sensor data in real-time and trigger notifications for anomalies.',
+      tech: 'IoT Sensors, Real-Time Monitoring',
+      role: 'IoT Developer'
+    },
+    {
+      name: 'Text-to-Image Generator',
+      description: 'Web app that converts user-entered text into styled image outputs with custom fonts and colors. Users can download generated images.',
+      tech: 'HTML, CSS, JavaScript, Canvas API',
+      role: 'Web Developer'
+    },
+    {
+      name: 'Campus Network Infrastructure',
+      description: 'Designed and implemented a private network connecting 4 campuses using routers, switches, and proper segmentation. Configured NAT, DHCP, VLANs, and firewall rules.',
+      tech: 'Cisco Packet Tracer, Networking',
+      role: 'Network Engineer'
+    },
+    {
+      name: 'Backup and Recovery in Windows Server 2022',
+      description: 'Performed system-level data backup, restore, and scheduling using Windows Server tools and Acronis. Documented disaster recovery plans.',
+      tech: 'Windows Server 2022, Acronis',
+      role: 'System Administrator'
     }
-
-    
   ];
 
   const containerVariants = {
@@ -97,6 +121,19 @@ const Projects = () => {
                     {project.role}
                   </span>
                 </div>
+                {project.link && (
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-2 inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-sm font-medium"
+                  >
+                    <ExternalLink size={16} />
+                    Visit Website
+                  </motion.a>
+                )}
               </div>
             </motion.div>
           ))}

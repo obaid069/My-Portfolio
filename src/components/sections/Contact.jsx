@@ -73,7 +73,11 @@ const Contact = () => {
           >
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
               <h4 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">Email</h4>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">obaidzafar234@gmail.com</p>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">obaidzafar234@mail.com</p>
+            </div>
+            <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
+              <h4 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">Mobile</h4>
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">+92 3165539458</p>
             </div>
             <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg">
               <h4 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-2">GitHub</h4>

@@ -6,27 +6,27 @@ const About = () => {
   const achievements = [
     {
       icon: Award,
-      title: 'Google IT Support Certification',
+      title: 'Technical Support Fundamentals (Google)',
       year: '2025',
-      description: 'Comprehensive IT support and troubleshooting certification'
+      description: 'Acquired foundational IT skills including troubleshooting, customer service, networking, system administration, and security'
     },
     {
       icon: Award,
-      title: "AWS Fundamentals By Coursera",
-      year: '2025',
-      description: 'Recognized for academic excellence at Air University'
+      title: 'AWS Fundamentals Specialization',
+      year: '2024',
+      description: 'Explored core AWS services, ETL pipelines, and big data processing frameworks within the AWS ecosystem'
     },
     {
-      icon: Code,
-      title: 'AI Models for Mobile Inference',
+      icon: Award,
+      title: 'Google Project Management',
       year: '2024',
-      description: 'Built custom AI models optimized for real-time mobile applications'
+      description: 'Applied modern project life cycle phases, focusing on tools and strategies to improve planning, execution, and delivery'
     },
     {
       icon: Server,
-      title: 'CI/CD & Cloud Deployments',
-      year: '2023-2024',
-      description: 'Successfully completed multiple DevOps and cloud infrastructure projects'
+      title: 'DevOps & Full-Stack Projects',
+      year: '2024-2025',
+      description: 'Successfully completed multiple DevOps, full-stack, and IoT infrastructure projects'
     }
   ];
 
@@ -54,7 +54,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gray-900 dark:bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -65,13 +65,13 @@ const About = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4"
           >
             About <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Me</span>
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4"
+            className="text-sm sm:text-base lg:text-lg text-gray-400 max-w-3xl mx-auto px-4"
           >
             Passionate about bridging the gap between cutting-edge technology and practical solutions
           </motion.p>
@@ -87,27 +87,30 @@ const About = () => {
             className="space-y-4 sm:space-y-6"
           >
             <motion.div variants={itemVariants} className="space-y-3 sm:space-y-4">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+              <h3 className="text-xl sm:text-2xl font-bold text-white">
                 A Multidisciplinary Tech Professional
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                Currently pursuing my Bachelor of Science in Information Technolgy degree at Air University Islamabad (Main Campus).
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                Currently pursuing my Bachelor of Science in Information Technology degree at Air University Islamabad (September 2022 - July 2026).
               </p>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
-                My expertise spans across AI development, DevOps practices, system administration, and full-stack 
-                web development. I'm passionate about creating intelligent applications that solve real-world problems 
-                while maintaining robust, scalable infrastructure.
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+                My expertise spans across IT Support, IoT, System Administration, Full-Stack Development, and DevOps practices. 
+                Skilled in troubleshooting hardware, software, and network issues across Windows and Linux environments. 
+                Proficient with cloud platforms like AWS and Firebase, and experienced in building full-stack applications using React.js, 
+                Node.js, MongoDB, and .NET Core.
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="bg-gray-50 dark:bg-gray-800 p-4 sm:p-6 rounded-lg">
               <h4 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-3">Education</h4>
               <div className="space-y-2">
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                <p className="text-sm sm:text-base font-medium text-gray-800 dark:text-gray-300">
+                  Bachelor of Science in Information Technology
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-500">2022 - 2026</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Air University Islamabad</p>
+                <p className="text-sm text-gray-500 dark:text-gray-500">September 2022 - July 2026</p>
                 <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  Key Areas: Artificial Intelligence, DevOps, System Administration, Full Stack Development
+                  Key Areas: IT Support, IoT, System Administration, Full Stack Development, DevOps, Networking
                 </p>
               </div>
             </motion.div>
