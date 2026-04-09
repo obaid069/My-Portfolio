@@ -13,9 +13,12 @@ import './App.css';
 function App() {
   return (
     <ThemeProvider>
-      <div className="bg-gray-50 dark:bg-gray-900 min-h-screen">
+      <div className="app-shell">
+        <div className="ambient-layer" aria-hidden="true">
+          <div className="ambient-grid"></div>
+        </div>
         <Header />
-        <main className="relative z-10">
+        <main className="section-wrapper">
           <Hero />
           <About />
           <Skills />
