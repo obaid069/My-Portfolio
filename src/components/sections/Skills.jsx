@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 import { Zap, Code, Server } from 'lucide-react';
 
 const Skills = () => {
@@ -42,47 +42,47 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-12 sm:py-16 lg:py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="skills" className="py-14 sm:py-18 lg:py-22 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <Motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
-          <motion.h2
+          <Motion.h2
             variants={itemVariants}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4"
           >
-            My <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Skills</span>
-          </motion.h2>
-          <motion.p
+            My <span className="gradient-text">Skills</span>
+          </Motion.h2>
+          <Motion.p
             variants={itemVariants}
-            className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto px-4"
+            className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto px-4"
           >
             A blend of creativity and technology, driven by curiosity and continuous learning.
-          </motion.p>
-        </motion.div>
+          </Motion.p>
+        </Motion.div>
 
         <div className="grid gap-4 sm:gap-6 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((skill, index) => (
-            <motion.div
+            <Motion.div
               key={index}
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
-              className="bg-white dark:bg-gray-900 p-4 sm:p-6 rounded-lg shadow-md border border-gray-300 dark:border-gray-700 hover:shadow-lg transition-all duration-300"
+              className="card-surface p-4 sm:p-6 rounded-xl hover:shadow-lg transition-all duration-300"
             >
               <div className="flex items-center space-x-3 sm:space-x-4">
-                <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 sm:p-3 rounded-lg flex-shrink-0">
+                <div className="bg-gradient-to-br from-cyan-500 to-amber-400 p-2 sm:p-3 rounded-lg flex-shrink-0">
                   <skill.icon className="text-white" size={20} />
                 </div>
                 <div>
-                  <h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white">{skill.name}</h4>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{skill.description}</p>
+                  <h4 className="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100">{skill.name}</h4>
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">{skill.description}</p>
                 </div>
               </div>
-            </motion.div>
+            </Motion.div>
           ))}
         </div>
       </div>
