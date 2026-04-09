@@ -1,12 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion as Motion } from 'framer-motion';
 import { ChevronDown, Download } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import Particles from '../Particles';
 
 const Hero = () => {
   const { isDark } = useTheme();
-  
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const stats = [
+    { label: 'Projects Delivered', value: '15+' },
+    { label: 'Stacks Used', value: '10+' },
+    { label: 'Focus Areas', value: 'IT + DevOps' },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -19,7 +26,7 @@ const Hero = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 20, opacity: 1 },
     visible: {
       y: 0,
       opacity: 1,
@@ -37,130 +44,146 @@ const Hero = () => {
     }
   };
 
+  const handleOrbMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+
+    const rotateY = (x - 0.5) * 14;
+    const rotateX = (0.5 - y) * 14;
+
+    setTilt({ x: rotateY, y: rotateX });
+  };
+
+  const resetOrbTilt = () => {
+    setTilt({ x: 0, y: 0 });
+  };
+
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-100 to-purple-100 dark:from-slate-900 dark:via-gray-900 dark:to-indigo-900 relative overflow-hidden px-4 sm:px-6 lg:px-8"
+      className="relative min-h-screen flex items-center overflow-hidden px-4 sm:px-6 lg:px-8"
     >
-      <div style={{ width: '100%', height: '1000px', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+      <div className="absolute inset-0 z-0">
         <Particles
-          particleColors={isDark ? ['#60a5fa', '#a78bfa', '#34d399'] : ['#1e40af', '#7c3aed', '#059669', '#dc2626', '#ea580c']}
-          particleCount={400}
-          particleSpread={15}
-          speed={0.2}
-          particleBaseSize={300}
-          moveParticlesOnHover={true}
-          particleHoverFactor={1}
+          particleColors={isDark ? ['#22d3ee', '#38bdf8', '#f59e0b'] : ['#0c4a6e', '#0284c7', '#d97706']}
+          particleCount={isDark ? 190 : 120}
+          particleSpread={isDark ? 12 : 10}
+          speed={isDark ? 0.14 : 0.08}
+          particleBaseSize={isDark ? 135 : 95}
+          moveParticlesOnHover={false}
+          particleHoverFactor={0}
           alphaParticles={true}
-          disableRotation={false}
+          disableRotation={true}
         />
       </div>
-      
-      <div className="max-w-7xl mx-auto text-center relative z-20 w-full pointer-events-none">
-        <motion.div
+
+      <div className="max-w-7xl mx-auto relative z-10 w-full pt-28 pb-16 lg:pt-32 lg:pb-20">
+        <Motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-6 sm:space-y-8"
+          className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center"
         >
-          {/* Profile Image */}
-          <motion.div
-            variants={itemVariants}
-            className="flex justify-center"
-          >
-            <div className="relative">
-              <motion.div
-                animate={{
-                  rotate: [0, 360],
-                }}
-                transition={{
-                  duration: 20,
-                  repeat: Infinity,
-                  ease: 'linear',
-                }}
-                className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 blur-sm opacity-75"
-              ></motion.div>
-              <div className="relative w-24 h-24 xs:w-28 xs:h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold">
-                OZ9
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Name and Title */}
-          <motion.div variants={itemVariants} className="space-y-4">
-            <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-800 dark:text-white">
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400 bg-clip-text text-transparent">
-                Muhammad Obaid Zafar
+          <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
+            <Motion.div variants={itemVariants}>
+              <span className="hero-intro-chip inline-flex items-center px-4 py-2 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm">
+                Building reliable products across IT Support, IoT, and Full-Stack Engineering
               </span>
-            </h1>
-            <p className="text-base xs:text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-2">
-              IT Support | IoT | System Administrator | Full Stack Developer | DevOps Engineer
-            </p>
-          </motion.div>
+            </Motion.div>
 
-          {/* Description */}
-          <motion.p
-            variants={itemVariants}
-            className="text-sm xs:text-base sm:text-lg text-gray-500 dark:text-gray-400 max-w-4xl mx-auto leading-relaxed px-2"
-          >
-            Final-year IT student with hands-on experience in IT Support, IoT, System Administration, Full-Stack Development, and DevOps practices. 
-            Skilled in troubleshooting hardware, software, and network issues across Windows and Linux environments. Experienced in building and deploying 
-            full-stack applications and integrating CI/CD pipelines with Docker, Jenkins, and GitHub Actions.
-          </motion.p>
+            <Motion.div variants={itemVariants} className="space-y-4">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.15rem] font-bold leading-tight">
+                <span className="hero-title-primary block">
+                  Modern Digital Solutions
+                </span>
+                <span className="block gradient-text">with an Engineering Mindset</span>
+              </h1>
+              <p className="text-sm xs:text-base sm:text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                I am Muhammad Obaid Zafar, a final-year IT student focused on designing scalable systems, resilient support workflows, and production-ready web/mobile products with measurable impact.
+              </p>
+            </Motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center items-center px-2"
-          >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
-              className="px-6 xs:px-8 py-2.5 xs:py-3 bg-gradient-to-r from-indigo-700 to-purple-700 text-white rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-sm xs:text-base pointer-events-auto"
+            <Motion.div
+              variants={itemVariants}
+              className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
-              Get In Touch
-            </motion.button>
-            
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => {
-                const link = document.createElement('a');
-                link.href = '/Resume.pdf';
-                link.download = 'Muhammad_Obaid_Zafar_Resume.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-              className="px-6 xs:px-8 py-2.5 xs:py-3 border-2 border-blue-600 dark:border-cyan-500 text-blue-600 dark:text-cyan-400 rounded-full font-semibold hover:bg-blue-600 dark:hover:bg-cyan-500 hover:text-white dark:hover:text-black transition-all duration-300 flex items-center gap-2 text-sm xs:text-base pointer-events-auto"
-            >
-              <Download size={20} />
-              Download CV
-            </motion.button>
-          </motion.div>
+              <Motion.button
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
+                className="px-7 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-cyan-500/25 transition-colors"
+              >
+                Start a Conversation
+              </Motion.button>
 
-          {/* Scroll Down Indicator */}
-          <motion.div
+              <Motion.button
+                whileHover={{ y: -2, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => {
+                  const link = document.createElement('a');
+                  link.href = '/Resume.pdf';
+                  link.download = 'Muhammad_Obaid_Zafar_Resume.pdf';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className="px-7 py-3 rounded-xl border border-amber-500/70 text-slate-900 dark:text-amber-200 bg-white/85 dark:bg-slate-900/50 hover:bg-amber-300/22 dark:hover:bg-amber-300/10 font-semibold text-sm sm:text-base inline-flex items-center justify-center gap-2"
+              >
+                <Download size={18} />
+                Download CV
+              </Motion.button>
+            </Motion.div>
+
+            <Motion.div
+              variants={itemVariants}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4"
+            >
+              {stats.map((item) => (
+                <div
+                  key={item.label}
+                  className="card-surface rounded-xl px-4 py-3 text-left"
+                >
+                  <p className="text-xl font-semibold hero-stat-value">{item.value}</p>
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">{item.label}</p>
+                </div>
+              ))}
+            </Motion.div>
+          </div>
+
+          <Motion.div variants={itemVariants} className="hero-orb-wrap">
+            <Motion.div
+              onMouseMove={handleOrbMove}
+              onMouseLeave={resetOrbTilt}
+              animate={{ rotateX: tilt.y, rotateY: tilt.x }}
+              transition={{ type: 'spring', stiffness: 130, damping: 14, mass: 0.5 }}
+              className="hero-orb"
+            >
+              <div className="hero-ring hero-ring-1"></div>
+              <div className="hero-ring hero-ring-2"></div>
+              <div className="hero-core">OZ</div>
+              <span className="tech-tag">React</span>
+              <span className="tech-tag">DevOps</span>
+              <span className="tech-tag">IoT</span>
+              <span className="tech-tag">Cloud</span>
+            </Motion.div>
+          </Motion.div>
+
+          <Motion.div
             variants={itemVariants}
-            className="flex justify-center mt-8 sm:mt-12 md:mt-16"
+            className="lg:col-span-2 flex justify-center mt-2"
           >
-            <motion.button
+            <Motion.button
               onClick={scrollToAbout}
-              animate={{
-                y: [0, 10, 0],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-              className="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors pointer-events-auto"
+              animate={{ y: [0, 9, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+              className="text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-300 transition-colors"
+              aria-label="Scroll to about section"
             >
-              <ChevronDown size={32} />
-            </motion.button>
-          </motion.div>
-        </motion.div>
+              <ChevronDown size={34} />
+            </Motion.button>
+          </Motion.div>
+        </Motion.div>
       </div>
     </section>
   );
