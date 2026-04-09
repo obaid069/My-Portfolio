@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion as Motion } from 'framer-motion';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -13,13 +13,15 @@ const Header = () => {
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Contact', href: '#contact' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 18);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -33,78 +35,86 @@ const Header = () => {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
+    <Motion.header
+      initial={{ y: -48, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.45, ease: 'easeOut' }}
+      className="fixed top-0 left-0 right-0 z-50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-3 sm:py-4">
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-          >
-            Obaid Zafar
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-4 lg:space-x-8">
-            {menuItems.map((item) => (
-              <motion.button
-                key={item.name}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors relative group text-sm lg:text-base"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
-              </motion.button>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-2 sm:space-x-4">
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-gray-700 dark:text-gray-300"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div className={`glass-surface rounded-2xl ${scrolled ? 'shadow-xl' : ''}`}>
+          <div className="flex items-center justify-between px-3 sm:px-5 py-3">
+            <Motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => scrollToSection('#home')}
+              className="text-base sm:text-lg lg:text-xl font-semibold"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
-          </div>
-        </div>
+              <span className="gradient-text">Obaid Zafar</span>
+            </Motion.button>
 
-        {/* Mobile Menu */}
-        <motion.div
-          initial={false}
-          animate={{
-            height: isMenuOpen ? 'auto' : 0,
-            opacity: isMenuOpen ? 1 : 0,
-          }}
-          className="md:hidden overflow-hidden"
-        >
-          <nav className="py-4 space-y-2">
-            {menuItems.map((item) => (
-              <motion.button
-                key={item.name}
-                whileHover={{ x: 10 }}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-4 py-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md transition-colors text-base"
+            <nav className="hidden md:flex items-center gap-1 lg:gap-2">
+              {menuItems.map((item) => (
+                <Motion.button
+                  key={item.name}
+                  whileHover={{ y: -1.5 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => scrollToSection(item.href)}
+                  className="px-3 lg:px-4 py-2 rounded-xl text-sm lg:text-[0.95rem] font-medium text-slate-800 dark:text-slate-200 hover:text-cyan-700 dark:hover:text-cyan-300 hover:bg-white/75 dark:hover:bg-slate-800/60 transition-colors"
+                >
+                  {item.name}
+                </Motion.button>
+              ))}
+            </nav>
+
+            <div className="flex items-center gap-2">
+              <Motion.button
+                whileTap={{ scale: 0.92 }}
+                onClick={toggleTheme}
+                className="p-2.5 rounded-xl bg-white/90 dark:bg-slate-800/70 text-slate-800 dark:text-slate-100 border border-slate-300/80 dark:border-slate-700/80"
+                aria-label="Toggle theme"
               >
-                {item.name}
-              </motion.button>
-            ))}
-          </nav>
-        </motion.div>
+                {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              </Motion.button>
+
+              <Motion.button
+                whileTap={{ scale: 0.92 }}
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+                className="md:hidden p-2.5 rounded-xl bg-white/90 dark:bg-slate-800/70 text-slate-800 dark:text-slate-100 border border-slate-300/80 dark:border-slate-700/80"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+              </Motion.button>
+            </div>
+          </div>
+
+          <AnimatePresence initial={false}>
+            {isMenuOpen && (
+              <Motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.22, ease: 'easeInOut' }}
+                className="md:hidden overflow-hidden border-t border-slate-200/70 dark:border-slate-700/70"
+              >
+                <nav className="grid grid-cols-2 gap-2 p-3">
+                  {menuItems.map((item) => (
+                    <Motion.button
+                      key={item.name}
+                      whileTap={{ scale: 0.97 }}
+                      onClick={() => scrollToSection(item.href)}
+                      className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-cyan-700 dark:hover:text-cyan-300 hover:bg-white/85 dark:hover:bg-slate-800/80 transition-colors"
+                    >
+                      {item.name}
+                    </Motion.button>
+                  ))}
+                </nav>
+              </Motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
-    </motion.header>
+    </Motion.header>
   );
 };
 
