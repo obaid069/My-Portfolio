@@ -1,1 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+
+:root {
+	--bg-0: #eff4fa;
+	--bg-1: #dfe9f4;
+	--surface-0: rgba(255, 255, 255, 0.96);
+	--surface-1: #ffffff;
+	--text-0: #0b1220;
+	--text-1: #1f2937;
+	--accent-cyan: #0f7394;
+	--accent-sky: #0369a1;
+	--accent-amber: #a16207;
+	--border-soft: rgba(14, 21, 37, 0.14);
+}
+
+html.dark {
+	--bg-0: #040916;
+	--bg-1: #081328;
+	--surface-0: rgba(10, 22, 46, 0.58);
+	--surface-1: #0b1a34;
+	--text-0: #ecf4ff;
+	--text-1: #9fb2c9;
+	--accent-cyan: #22d3ee;
+	--accent-sky: #38bdf8;
+	--accent-amber: #fcd34d;
+	--border-soft: rgba(159, 178, 201, 0.22);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: 'IBM Plex Sans', sans-serif;
+	color: var(--text-0);
+	background:
+		radial-gradient(70rem 70rem at 90% -10%, rgba(56, 189, 248, 0.12), transparent 60%),
+		radial-gradient(64rem 64rem at -20% 8%, rgba(245, 158, 11, 0.1), transparent 58%),
+		linear-gradient(155deg, var(--bg-0), var(--bg-1));
+	transition: background-color 260ms ease, color 260ms ease;
+	overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Space Grotesk', sans-serif;
+	letter-spacing: -0.02em;
+}
+
+::selection {
+	background: rgba(34, 211, 238, 0.28);
+	color: #00131a;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+html.dark {
+	color-scheme: dark;
+}
+
+html:not(.dark) {
+	color-scheme: light;
+}
