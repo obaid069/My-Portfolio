@@ -54,11 +54,14 @@ const Experience = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Motion.div
           variants={containerVariants}
-          initial="hidden"
+          initial="visible"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
+          <Motion.span variants={itemVariants} className="section-kicker">
+            Career Timeline
+          </Motion.span>
           <Motion.h2
             variants={itemVariants}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4"
