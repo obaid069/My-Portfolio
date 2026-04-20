@@ -1,30 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-	--bg-0: #eff4fa;
-	--bg-1: #dfe9f4;
-	--surface-0: rgba(255, 255, 255, 0.96);
-	--surface-1: #ffffff;
-	--text-0: #0b1220;
-	--text-1: #1f2937;
-	--accent-cyan: #0f7394;
-	--accent-sky: #0369a1;
-	--accent-amber: #a16207;
-	--border-soft: rgba(14, 21, 37, 0.14);
+	--bg-0: #02050d;
+	--bg-1: #061022;
+	--surface-0: rgba(10, 16, 31, 0.8);
+	--surface-1: #0b1324;
+	--text-0: #f4f8ff;
+	--text-1: #9bb0ca;
+	--accent-mint: #38f2c2;
+	--accent-cyan: #22d3ee;
+	--accent-sky: #5dd7ff;
+	--border-soft: rgba(145, 190, 215, 0.22);
 }
 
 html.dark {
-	--bg-0: #040916;
-	--bg-1: #081328;
-	--surface-0: rgba(10, 22, 46, 0.58);
-	--surface-1: #0b1a34;
-	--text-0: #ecf4ff;
-	--text-1: #9fb2c9;
-	--accent-cyan: #22d3ee;
-	--accent-sky: #38bdf8;
-	--accent-amber: #fcd34d;
-	--border-soft: rgba(159, 178, 201, 0.22);
+	--bg-0: #01040b;
+	--bg-1: #071123;
+	--surface-0: rgba(8, 14, 29, 0.82);
+	--surface-1: #0a1221;
+	--text-0: #f4f9ff;
+	--text-1: #98aec8;
+	--accent-mint: #4cffcb;
+	--accent-cyan: #32e6ff;
+	--accent-sky: #7ce8ff;
+	--border-soft: rgba(161, 213, 236, 0.24);
 }
 
 * {
@@ -39,12 +39,12 @@ body,
 
 body {
 	margin: 0;
-	font-family: 'IBM Plex Sans', sans-serif;
+	font-family: 'Sora', sans-serif;
 	color: var(--text-0);
 	background:
-		radial-gradient(70rem 70rem at 90% -10%, rgba(56, 189, 248, 0.12), transparent 60%),
-		radial-gradient(64rem 64rem at -20% 8%, rgba(245, 158, 11, 0.1), transparent 58%),
-		linear-gradient(155deg, var(--bg-0), var(--bg-1));
+		radial-gradient(70rem 44rem at 78% -10%, rgba(56, 242, 194, 0.17), transparent 64%),
+		radial-gradient(62rem 48rem at -14% 5%, rgba(50, 230, 255, 0.14), transparent 62%),
+		linear-gradient(165deg, var(--bg-0), var(--bg-1));
 	transition: background-color 260ms ease, color 260ms ease;
 	overflow-x: clip;
 }
@@ -60,8 +60,8 @@ h6 {
 }
 
 ::selection {
-	background: rgba(34, 211, 238, 0.28);
-	color: #00131a;
+	background: rgba(76, 255, 203, 0.36);
+	color: #020711;
 }
 
 html {
@@ -73,5 +73,5 @@ html.dark {
 }
 
 html:not(.dark) {
-	color-scheme: light;
+	color-scheme: dark;
 }

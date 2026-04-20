@@ -42,15 +42,19 @@ const Header = () => {
       className="fixed top-0 left-0 right-0 z-50"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <div className={`glass-surface rounded-2xl ${scrolled ? 'shadow-xl' : ''}`}>
+        <div className={`glass-surface header-shell ${scrolled ? 'header-scrolled' : ''}`}>
           <div className="flex items-center justify-between px-3 sm:px-5 py-3">
             <Motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => scrollToSection('#home')}
-              className="text-base sm:text-lg lg:text-xl font-semibold"
+              className="header-brand text-base sm:text-lg lg:text-xl font-semibold"
             >
-              <span className="gradient-text">Obaid Zafar</span>
+              <span className="brand-mark" aria-hidden="true"></span>
+              <span>
+                <span className="gradient-text">Obaid Zafar</span>
+                <span className="header-brand-sub">Build Agentic Systems</span>
+              </span>
             </Motion.button>
 
             <nav className="hidden md:flex items-center gap-1 lg:gap-2">
@@ -60,7 +64,7 @@ const Header = () => {
                   whileHover={{ y: -1.5 }}
                   whileTap={{ scale: 0.97 }}
                   onClick={() => scrollToSection(item.href)}
-                  className="px-3 lg:px-4 py-2 rounded-xl text-sm lg:text-[0.95rem] font-medium text-slate-800 dark:text-slate-200 hover:text-cyan-700 dark:hover:text-cyan-300 hover:bg-white/75 dark:hover:bg-slate-800/60 transition-colors"
+                  className="header-nav-btn px-3 lg:px-4 py-2 text-sm lg:text-[0.95rem] font-medium"
                 >
                   {item.name}
                 </Motion.button>
@@ -71,7 +75,7 @@ const Header = () => {
               <Motion.button
                 whileTap={{ scale: 0.92 }}
                 onClick={toggleTheme}
-                className="p-2.5 rounded-xl bg-white/90 dark:bg-slate-800/70 text-slate-800 dark:text-slate-100 border border-slate-300/80 dark:border-slate-700/80"
+                className="header-icon-btn p-2.5 rounded-xl"
                 aria-label="Toggle theme"
               >
                 {isDark ? <Sun size={18} /> : <Moon size={18} />}
@@ -80,7 +84,7 @@ const Header = () => {
               <Motion.button
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setIsMenuOpen((prev) => !prev)}
-                className="md:hidden p-2.5 rounded-xl bg-white/90 dark:bg-slate-800/70 text-slate-800 dark:text-slate-100 border border-slate-300/80 dark:border-slate-700/80"
+                className="header-icon-btn md:hidden p-2.5 rounded-xl"
                 aria-label="Toggle menu"
               >
                 {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -95,7 +99,7 @@ const Header = () => {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.22, ease: 'easeInOut' }}
-                className="md:hidden overflow-hidden border-t border-slate-200/70 dark:border-slate-700/70"
+                className="header-mobile-nav md:hidden overflow-hidden"
               >
                 <nav className="grid grid-cols-2 gap-2 p-3">
                   {menuItems.map((item) => (
@@ -103,7 +107,7 @@ const Header = () => {
                       key={item.name}
                       whileTap={{ scale: 0.97 }}
                       onClick={() => scrollToSection(item.href)}
-                      className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-slate-800 dark:text-slate-200 hover:text-cyan-700 dark:hover:text-cyan-300 hover:bg-white/85 dark:hover:bg-slate-800/80 transition-colors"
+                      className="header-nav-btn text-left px-3 py-2.5 rounded-lg text-sm font-medium"
                     >
                       {item.name}
                     </Motion.button>
