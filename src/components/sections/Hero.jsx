@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion as Motion } from 'framer-motion';
-import { ChevronDown, Download } from 'lucide-react';
+import { ArrowRight, ChevronDown, Download, Sparkles } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import Particles from '../Particles';
 
@@ -9,9 +9,15 @@ const Hero = () => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   const stats = [
-    { label: 'Projects Delivered', value: '15+' },
-    { label: 'Stacks Used', value: '10+' },
-    { label: 'Focus Areas', value: 'IT + DevOps' },
+    { label: 'Production Projects', value: '18+' },
+    { label: 'Domains Covered', value: 'IT + DevOps + Full Stack' },
+    { label: 'Automation Workflows', value: '30+' },
+  ];
+
+  const automationRules = [
+    'Prioritize incidents by SLA tier',
+    'Trigger deployment checks after fixes',
+    'Route alerts by domain ownership',
   ];
 
   const containerVariants = {
@@ -26,7 +32,7 @@ const Hero = () => {
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 1 },
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
@@ -44,19 +50,28 @@ const Hero = () => {
     }
   };
 
-  const handleOrbMove = (event) => {
+  const handleBoardMove = (event) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width;
     const y = (event.clientY - rect.top) / rect.height;
 
-    const rotateY = (x - 0.5) * 14;
-    const rotateX = (0.5 - y) * 14;
+    const rotateY = (x - 0.5) * 7;
+    const rotateX = (0.5 - y) * 7;
 
     setTilt({ x: rotateY, y: rotateX });
   };
 
-  const resetOrbTilt = () => {
+  const resetBoardTilt = () => {
     setTilt({ x: 0, y: 0 });
+  };
+
+  const downloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/Resume.pdf';
+    link.download = 'Muhammad_Obaid_Zafar_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -66,11 +81,11 @@ const Hero = () => {
     >
       <div className="absolute inset-0 z-0">
         <Particles
-          particleColors={isDark ? ['#22d3ee', '#38bdf8', '#f59e0b'] : ['#0c4a6e', '#0284c7', '#d97706']}
-          particleCount={isDark ? 190 : 120}
-          particleSpread={isDark ? 12 : 10}
-          speed={isDark ? 0.14 : 0.08}
-          particleBaseSize={isDark ? 135 : 95}
+          particleColors={isDark ? ['#4cffcb', '#32e6ff', '#84f2ff'] : ['#31c4a2', '#2bc0df', '#67d9ef']}
+          particleCount={isDark ? 120 : 90}
+          particleSpread={9}
+          speed={isDark ? 0.1 : 0.08}
+          particleBaseSize={96}
           moveParticlesOnHover={false}
           particleHoverFactor={0}
           alphaParticles={true}
@@ -83,24 +98,25 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-center"
+          className="grid lg:grid-cols-[1.03fr_0.97fr] gap-10 lg:gap-14 items-center"
         >
           <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
             <Motion.div variants={itemVariants}>
-              <span className="hero-intro-chip inline-flex items-center px-4 py-2 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm">
-                Building reliable products across IT Support, IoT, and Full-Stack Engineering
+              <span className="hero-intro-chip inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm">
+                <Sparkles size={15} />
+                Agentic Portfolio Interface
               </span>
             </Motion.div>
 
             <Motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-[4.15rem] font-bold leading-tight">
                 <span className="hero-title-primary block">
-                  Modern Digital Solutions
+                  I Build Product Systems
                 </span>
-                <span className="block gradient-text">with an Engineering Mindset</span>
+                <span className="block gradient-text">That Think, Adapt, and Ship Fast</span>
               </h1>
               <p className="text-sm xs:text-base sm:text-lg text-slate-700 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                I am Muhammad Obaid Zafar, a final-year IT student focused on designing scalable systems, resilient support workflows, and production-ready web/mobile products with measurable impact.
+                I am Muhammad Obaid Zafar, a final-year IT engineer focused on resilient support workflows, scalable full-stack architecture, and practical automation that improves delivery speed.
               </p>
             </Motion.div>
 
@@ -111,24 +127,18 @@ const Hero = () => {
               <Motion.button
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
-                className="px-7 py-3 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-cyan-500/25 transition-colors"
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="cta-primary px-7 py-3 rounded-xl font-semibold text-sm sm:text-base inline-flex items-center justify-center gap-2 transition-colors"
               >
                 Start a Conversation
+                <ArrowRight size={16} />
               </Motion.button>
 
               <Motion.button
                 whileHover={{ y: -2, scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = '/Resume.pdf';
-                  link.download = 'Muhammad_Obaid_Zafar_Resume.pdf';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
-                className="px-7 py-3 rounded-xl border border-amber-500/70 text-slate-900 dark:text-amber-200 bg-white/85 dark:bg-slate-900/50 hover:bg-amber-300/22 dark:hover:bg-amber-300/10 font-semibold text-sm sm:text-base inline-flex items-center justify-center gap-2"
+                onClick={downloadResume}
+                className="cta-secondary px-7 py-3 rounded-xl font-semibold text-sm sm:text-base inline-flex items-center justify-center gap-2 transition-colors"
               >
                 <Download size={18} />
                 Download CV
@@ -142,30 +152,65 @@ const Hero = () => {
               {stats.map((item) => (
                 <div
                   key={item.label}
-                  className="card-surface rounded-xl px-4 py-3 text-left"
+                  className="hero-stat-card px-4 py-3 text-left"
                 >
-                  <p className="text-xl font-semibold hero-stat-value">{item.value}</p>
+                  <p className="text-base sm:text-lg font-semibold hero-stat-value">{item.value}</p>
                   <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">{item.label}</p>
                 </div>
               ))}
             </Motion.div>
           </div>
 
-          <Motion.div variants={itemVariants} className="hero-orb-wrap">
+          <Motion.div variants={itemVariants} className="hero-board-wrap">
             <Motion.div
-              onMouseMove={handleOrbMove}
-              onMouseLeave={resetOrbTilt}
+              onMouseMove={handleBoardMove}
+              onMouseLeave={resetBoardTilt}
               animate={{ rotateX: tilt.y, rotateY: tilt.x }}
-              transition={{ type: 'spring', stiffness: 130, damping: 14, mass: 0.5 }}
-              className="hero-orb"
+              transition={{ type: 'spring', stiffness: 130, damping: 16, mass: 0.55 }}
+              className="workflow-board"
             >
-              <div className="hero-ring hero-ring-1"></div>
-              <div className="hero-ring hero-ring-2"></div>
-              <div className="hero-core">OZ</div>
-              <span className="tech-tag">React</span>
-              <span className="tech-tag">DevOps</span>
-              <span className="tech-tag">IoT</span>
-              <span className="tech-tag">Cloud</span>
+              <div className="workflow-grid"></div>
+              <span className="workflow-status">Live orchestration</span>
+
+              <article className="workflow-node node-top">
+                <p className="workflow-node-label">User Channel</p>
+                <h4>Support Intake</h4>
+                <p>Requests are captured, classified, and prioritized in real time.</p>
+              </article>
+
+              <article className="workflow-node node-left">
+                <p className="workflow-node-label">Stack Branch</p>
+                <h4>Frontend</h4>
+                <p>React interface updates with accessible, measurable UI states.</p>
+              </article>
+
+              <article className="workflow-node node-main">
+                <p className="workflow-node-label">Primary Agent</p>
+                <h4>Obaid System Core</h4>
+                <p>Bridges IT support signals, deployment logs, and product priorities.</p>
+              </article>
+
+              <article className="workflow-node node-right">
+                <p className="workflow-node-label">Stack Branch</p>
+                <h4>DevOps</h4>
+                <p>Pipelines, rollout safeguards, and uptime checks stay in sync.</p>
+              </article>
+
+              <div className="workflow-panel node-bottom">
+                <p className="workflow-node-label">Automation Rules</p>
+                {automationRules.map((rule, index) => (
+                  <div key={rule} className="workflow-rule">
+                    <span className="workflow-rule-index">{index + 1}</span>
+                    <span>{rule}</span>
+                  </div>
+                ))}
+              </div>
+
+              <span className="workflow-link link-top"></span>
+              <span className="workflow-link link-left"></span>
+              <span className="workflow-link link-right"></span>
+              <span className="workflow-link link-bottom"></span>
+              <div className="workflow-glow"></div>
             </Motion.div>
           </Motion.div>
 
