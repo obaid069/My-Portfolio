@@ -74,7 +74,7 @@ const Contact = () => {
           >
             <div className="card-surface p-4 rounded-xl">
               <h4 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Email</h4>
-              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">obaidzafar234@mail.com</p>
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">obaidzafar234@gmail.com</p>
             </div>
             <div className="card-surface p-4 rounded-xl">
               <h4 className="text-base sm:text-lg font-semibold text-slate-900 dark:text-slate-100 mb-2">Mobile</h4>
