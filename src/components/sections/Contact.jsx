@@ -6,12 +6,13 @@ const Contact = () => {
     <section id="contact" className="py-14 sm:py-18 lg:py-22 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="text-center mb-8 sm:mb-12 lg:mb-16"
         >
+          <span className="section-kicker">Contact Channel</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4">
             Get <span className="gradient-text">In Touch</span>
           </h2>
@@ -56,7 +57,7 @@ const Contact = () => {
               </div>
               <button
                 type="submit"
-                className="mt-4 px-5 py-2.5 bg-cyan-600 hover:bg-cyan-500 text-white rounded-md shadow-md text-sm sm:text-base font-medium transition-colors duration-200"
+                className="cta-primary mt-4 px-5 py-2.5 rounded-md text-sm sm:text-base font-medium transition-colors duration-200"
               >
                 Send Message
               </button>
