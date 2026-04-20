@@ -97,11 +97,14 @@ const Projects = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Motion.div
           variants={containerVariants}
-          initial="hidden"
+          initial="visible"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-10 sm:mb-14 lg:mb-16"
         >
+          <Motion.span variants={itemVariants} className="section-kicker">
+            Selected Workflows
+          </Motion.span>
           <Motion.h2
             variants={itemVariants}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 dark:text-slate-100 mb-4"
@@ -189,7 +192,7 @@ const Projects = () => {
         >
           <button
             onClick={() => document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-cyan-300/45 dark:border-cyan-400/35 bg-white/60 dark:bg-slate-900/55 text-slate-800 dark:text-slate-100 hover:bg-cyan-100/50 dark:hover:bg-cyan-500/10 transition-colors"
+            className="cta-secondary inline-flex items-center gap-2 px-5 py-3 rounded-xl transition-colors"
           >
             Want the full project archive?
             <ArrowRight size={16} />
