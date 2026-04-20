@@ -25,9 +25,10 @@ const Footer = () => {
     <Motion.footer
       initial={{ y: 50 }}
       animate={{ y: 0 }}
-      className="py-7 sm:py-9 bg-transparent text-center"
+      className="py-9 sm:py-11 bg-transparent text-center"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="pt-6 sm:pt-8 border-t border-slate-700/60">
         <div className="flex justify-center space-x-4 sm:space-x-6 mb-4">
           {socialLinks.map((social) => (
             <Motion.a
@@ -36,7 +37,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
-              className="glass-surface text-slate-600 dark:text-slate-200 hover:text-cyan-700 dark:hover:text-cyan-300 transition-all duration-200 p-2 rounded-lg"
+              className="glass-surface text-slate-600 dark:text-slate-200 hover:text-cyan-300 transition-all duration-200 p-2 rounded-lg border border-transparent hover:border-emerald-300/35"
             >
               <social.icon size={20} className="sm:w-6 sm:h-6" />
             </Motion.a>
@@ -46,6 +47,7 @@ const Footer = () => {
         <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
           © {new Date().getFullYear()} Obaid Zafar. All rights reserved.
         </p>
+        </div>
       </div>
     </Motion.footer>
   );
