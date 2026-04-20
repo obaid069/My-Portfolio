@@ -50,8 +50,7 @@ const Header = () => {
             >
               <span className="brand-mark" aria-hidden="true"></span>
               <span>
-                <span className="gradient-text">Obaid Zafar</span>
-                <span className="header-brand-sub">Build Agentic Systems</span>
+                <span className="gradient-text">Muhammad Obaid Zafar</span>
               </span>
             </Motion.button>
 

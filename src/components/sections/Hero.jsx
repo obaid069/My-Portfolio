@@ -10,8 +10,8 @@ const Hero = () => {
 
   const stats = [
     { label: 'Production Projects', value: '18+' },
-    { label: 'Domains Covered', value: 'IT + DevOps + Full Stack' },
-    { label: 'Automation Workflows', value: '30+' },
+    { label: 'Domains Covered', value: 'IT + DevOps' },
+    { label: 'Domains Covered', value: ' Cloud + Full Stack' },
   ];
 
   const automationRules = [
@@ -104,7 +104,6 @@ const Hero = () => {
             <Motion.div variants={itemVariants}>
               <span className="hero-intro-chip inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold backdrop-blur-sm">
                 <Sparkles size={15} />
-                Agentic Portfolio Interface
               </span>
             </Motion.div>
 
