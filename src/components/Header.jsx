@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { useTheme } from '../contexts/ThemeContext';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { isDark, toggleTheme } = useTheme();
 
   const menuItems = [
     { name: 'Home', href: '#home' },
@@ -72,15 +70,6 @@ const Header = () => {
             </nav>
 
             <div className="flex items-center gap-2">
-              <Motion.button
-                whileTap={{ scale: 0.92 }}
-                onClick={toggleTheme}
-                className="header-icon-btn p-2.5 rounded-xl"
-                aria-label="Toggle theme"
-              >
-                {isDark ? <Sun size={18} /> : <Moon size={18} />}
-              </Motion.button>
-
               <Motion.button
                 whileTap={{ scale: 0.92 }}
                 onClick={() => setIsMenuOpen((prev) => !prev)}
