@@ -17,7 +17,7 @@ export const ThemeProvider = ({ children }) => {
     if (saved !== null) {
       return JSON.parse(saved);
     }
-    return false;
+    return true;
   });
 
   useEffect(() => {
